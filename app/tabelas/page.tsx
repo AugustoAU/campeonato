@@ -1,43 +1,36 @@
+import { standings } from "../data/standings";
+
 export default function TabelaPage() {
   return (
-    <main>
-      <h1>📊 Classificação</h1>
+    <div>
+      <h1 className="text-3xl font-bold mb-6">
+        📊 Classificação
+      </h1>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Pos</th>
-            <th>Time</th>
-            <th>Pontos</th>
-          </tr>
-        </thead>
+      <div className="bg-zinc-900 rounded-xl overflow-hidden">
+        <table className="w-full">
+          <thead>
+            <tr className="border-b border-zinc-700">
+              <th className="text-left p-4">Pos</th>
+              <th className="text-left p-4">Time</th>
+              <th className="text-left p-4">Pts</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Amigos do Toddy</td>
-            <td>12</td>
-          </tr>
-
-          <tr>
-            <td>2</td>
-            <td>Amigos de Cima</td>
-            <td>10</td>
-          </tr>
-
-          <tr>
-            <td>2</td>
-            <td>Tropa da Banca</td>
-            <td>10</td>
-          </tr>
-
-          <tr>
-            <td>2</td>
-            <td>Familia DF</td>
-            <td>10</td>
-          </tr>
-        </tbody>
-      </table>
-    </main>
+          <tbody>
+            {standings.map((team) => (
+              <tr
+                key={team.position}
+                className="border-b border-zinc-800"
+              >
+                <td className="p-4">{team.position}</td>
+                <td className="p-4">{team.team}</td>
+                <td className="p-4">{team.points}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }
