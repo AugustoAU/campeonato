@@ -19,7 +19,7 @@ export const matches = [
     awayTeam: "Tropa da Banca",
     date: "05/07/2026",
     status: "Finalizado",
-    homeGoals: 2,
-    awayGoals: 0,
+    homeGoals: 3,
+    awayGoals: 2,
   },
 ];
