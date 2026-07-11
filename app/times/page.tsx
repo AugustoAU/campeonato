@@ -1,4 +1,5 @@
 import { teams } from "../data/teams";
+import Link from "next/link";
 
 export default function TimesPage() {
   return (
@@ -13,9 +14,15 @@ export default function TimesPage() {
             key={team.id}
             className="bg-zinc-900 p-4 rounded-xl"
           >
-            <h2 className="text-xl font-semibold">
-              {team.name}
-            </h2>
+            <Link
+              href={`/times/${team.name
+                .toLowerCase()
+                .replaceAll(" ", "-")}`}
+>
+              <h2 className="text-xl font-semibold hover:text-blue-400">
+                  {team.name}
+              </h2>
+            </Link>
 
             <p>{team.city}</p>
           </div>

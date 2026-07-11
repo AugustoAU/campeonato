@@ -4,10 +4,17 @@ import { matches } from "../data/matches";
 export function getStandings() {
   const table = teams.map((team) => ({
     team: team.name,
+
     points: 0,
+
+    games: 0,
     wins: 0,
     draws: 0,
     losses: 0,
+
+    goalsFor: 0,
+    goalsAgainst: 0,
+    goalDifference: 0,
   }));
 
   matches.forEach((match) => {
@@ -22,6 +29,15 @@ export function getStandings() {
     );
 
     if (!home || !away) return;
+
+    home.games += 1;
+    away.games += 1;
+
+    home.goalsFor += match.homeGoals!;
+    home.goalsAgainst += match.awayGoals!;
+
+    away.goalsFor += match.awayGoals!;
+    away.goalsAgainst += match.homeGoals!;
 
     if (match.homeGoals! > match.awayGoals!) {
       home.points += 3;
@@ -42,5 +58,16 @@ export function getStandings() {
     }
   });
 
-  return table.sort((a, b) => b.points - a.points);
+  table.forEach((team) => {
+    team.goalDifference =
+      team.goalsFor - team.goalsAgainst;
+  });
+
+  return table.sort((a, b) => {
+    if (b.points !== a.points) {
+      return b.points - a.points;
+    }
+
+    return b.goalDifference - a.goalDifference;
+  });
 }
