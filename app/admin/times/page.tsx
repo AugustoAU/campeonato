@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { teams } from "../../data/teams";
 
 export default function AdminTeamsPage() {
@@ -6,6 +7,13 @@ export default function AdminTeamsPage() {
       <h1 className="text-3xl font-bold mb-6">
         ⚽ Times
       </h1>
+
+      <Link
+        href="/admin/times/novo"
+        className="inline-block mb-6 bg-green-600 px-4 py-2 rounded-lg"
+      >
+        ➕ Novo Time
+      </Link>
 
       <div className="grid gap-4">
         {teams.map((team) => (

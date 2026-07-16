@@ -18,7 +18,7 @@ export default function JogosPage() {
             status={match.status}
             homeGoals={match.homeGoals}
             awayGoals={match.awayGoals}
-        />
+          />
         ))}
       </div>
     </div>
